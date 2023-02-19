@@ -1,11 +1,12 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static org.openqa.selenium.Keys.ENTER;
 
 public class TextBoxTests {
     @BeforeAll
@@ -17,7 +18,6 @@ public class TextBoxTests {
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
-
         $("#firstName").setValue("dsvsz");
         $("#lastName").setValue("dfvsdas");
         $("#userEmail").sendKeys("name@example.com");
@@ -27,12 +27,16 @@ public class TextBoxTests {
         $("#hobbies-checkbox-2").sendKeys(" ");
         $("#hobbies-checkbox-3").sendKeys(" ");
         $("#currentAddress").sendKeys("Street");
+        executeJavaScript("$('a#aw0').hide();");
+        $("#state").scrollIntoView(true);
         $("#state").click();
-        $("#react-select-3-option-1").click();;
+        $("#react-select-3-option-1").click();
         $("#city").click();
-        $("#react-select-4-option-0").click();;
-        $("#submit").sendKeys(Keys.ENTER);
-
+        $("#react-select-4-option-0").click();
+        $("#submit").sendKeys(ENTER);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(By.xpath("//div[@class='modal-body']//td[contains(text(),'Address')]/../td[2]")).shouldHave(text("Street"));
+        $(By.xpath("//div[@class='modal-body']//td[contains(text(),'Student Name')]/../td[2]")).shouldHave(text("dsvsz dfvsdas"));
     }
 }
+
