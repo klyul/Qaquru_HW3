@@ -40,7 +40,9 @@ public class RegistrationWithPageObjectTests extends TestBase {
                 .setCity(userCity)
                 .clickSubmit();
 
-        RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal.verifyResultsModalAppears()
+        RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+
+        registrationResultsModal.verifyModalAppears()
                 .verifyResult("Student Name", userName + " " + userLastName)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", userGender)
