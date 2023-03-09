@@ -92,7 +92,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setPicture(String location) {
-        pictureUpload.uploadFromClasspath(String location);
+        pictureUpload.uploadFromClasspath(location);
 
         return this;
     }

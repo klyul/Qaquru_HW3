@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.RegistrationResultsModal;
 
 public class RegistrationWithPageObjectTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
@@ -24,6 +25,7 @@ public class RegistrationWithPageObjectTests extends TestBase {
         String userCity = "Lucknow";
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName(userName)
                 .setLastName(userLastName)
                 .setEmail(userEmail)
@@ -38,7 +40,7 @@ public class RegistrationWithPageObjectTests extends TestBase {
                 .setCity(userCity)
                 .clickSubmit();
 
-        registrationResultsModal.verifyResultsModalAppears()
+        RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal.verifyResultsModalAppears()
                 .verifyResult("Student Name", userName + " " + userLastName)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", userGender)
