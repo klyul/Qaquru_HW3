@@ -12,7 +12,7 @@ public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
-    private SelenideElement
+    private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
@@ -32,88 +32,92 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
 
         return this;
     }
 
-    public RegistrationPage setFirstName (String value) {
+    public RegistrationPage removeBanner() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
+    public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
 
-    public RegistrationPage setLastName (String value) {
+    public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
 
-    public RegistrationPage setEmail (String value) {
+    public RegistrationPage setEmail(String value) {
         emailInput.setValue(value);
 
         return this;
     }
 
-    public RegistrationPage setGender (String gender) {
+    public RegistrationPage setGender(String gender) {
         genderInput.click();
 
         return this;
     }
 
-    public RegistrationPage setPhone (String value) {
+    public RegistrationPage setPhone(String value) {
         phoneInput.setValue(value);
 
         return this;
     }
 
-    public RegistrationPage setBirthDate (String day, String month, String year) {
+    public RegistrationPage setBirthDate(String day, String month, String year) {
         calendarComponent.setDate(day, month, year);
 
         return this;
     }
 
-    public RegistrationPage setSubjects (String value) {
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value);
         subjectsClick.click();
 
         return this;
     }
 
-    public RegistrationPage setHobbies (String hobbies) {
+    public RegistrationPage setHobbies(String hobby) {
         hobbiesInput.click();
 
         return this;
     }
 
-    public RegistrationPage setPicture (String location) {
-        pictureUpload.uploadFromClasspath("pictures/img1.jpeg");
+    public RegistrationPage setPicture(String location) {
+        pictureUpload.uploadFromClasspath(String location);
 
         return this;
     }
 
-    public RegistrationPage setAddress (String value) {
+    public RegistrationPage setAddress(String value) {
         addressInput.setValue(value).click();
 
         return this;
     }
 
-    public RegistrationPage setState (String value) {
+    public RegistrationPage setState(String value) {
         stateInput.click();
         stateCityWrapper.$(byText(value)).click();
 
         return this;
     }
 
-    public RegistrationPage setCity (String value) {
+    public RegistrationPage setCity(String value) {
         cityInput.click();
         cityWrapper.$(byText(value)).click();
 
         return this;
     }
 
-    public RegistrationPage clickSubmit () {
+    public RegistrationPage clickSubmit() {
         submitButton.click();
 
         return this;

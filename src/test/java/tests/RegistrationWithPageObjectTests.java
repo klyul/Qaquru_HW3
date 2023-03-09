@@ -1,9 +1,12 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 public class RegistrationWithPageObjectTests extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
     @Test
+
     void fillFormTest() {
         String userName = "dsvsz";
         String userLastName = "dfvsdas";
@@ -14,11 +17,11 @@ public class RegistrationWithPageObjectTests extends TestBase {
         String userBirth_month = "September";
         String userBirth_year = "1996";
         String userSubjects = "Art";
-        String userHobbies = "Gaming";
-        String userPictureLocation = "pictures/img1.jpeg";
+        String userHobbies = "Music";
+        String userPictureLocation = "pictures/img1.jpg";
         String userAddress = "Address 33, 99";
         String userState = "Uttar Pradesh";
-        String userCity = "Moscow";
+        String userCity = "Lucknow";
 
         registrationPage.openPage()
                 .setFirstName(userName)
@@ -35,7 +38,7 @@ public class RegistrationWithPageObjectTests extends TestBase {
                 .setCity(userCity)
                 .clickSubmit();
 
-        registrationPage.verifyResultsModalAppears()
+        registrationResultsModal.verifyResultsModalAppears()
                 .verifyResult("Student Name", userName + " " + userLastName)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", userGender)
@@ -44,7 +47,8 @@ public class RegistrationWithPageObjectTests extends TestBase {
                 .verifyResult("Subjects", userSubjects)
                 .verifyResult("Hobbies", userHobbies)
                 .verifyResult("Address", userAddress)
-                .verifyResult("State and City", userState + " " + userCity);
+                .verifyResult("State and City", userState + " " + userCity)
+                .verifyResult("Picture", "img1.jpg");
 
     }
 }
