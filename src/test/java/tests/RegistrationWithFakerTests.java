@@ -10,8 +10,8 @@ import static tests.TestData.userEmail;
 import static tests.TestData.userName;
 
 public class RegistrationWithFakerTests extends TestBase {
-    RegistrationWithFakerTests registrationPage = new RegistrationPage();
-     StudentData studentData = DataGenerator.getRandomStudent();
+    RegistrationPage registrationPage = new RegistrationPage();
+    StudentData studentData = DataGenerator.getRandomStudent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
     @Test
@@ -19,18 +19,18 @@ public class RegistrationWithFakerTests extends TestBase {
 
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(userName)
-                .setLastName(userLastName)
-                .setEmail(userEmail)
-                .setGender(userGender)
-                .setPhone(userNumber)
-                .setBirthDate(userBirth_day, userBirth_month, userBirth_year)
-                .setSubjects(userSubjects)
-                .setHobbies(userHobbies)
-                .setPicture(userPictureLocation)
-                .setAddress(userAddress)
-                .setState(userState)
-                .setCity(userCity)
+                .setFirstName(studentData.getFirstName())
+                .setLastName(studentData.getLastName())
+                .setEmail(studentData.getUserEmail())
+                .setGender(studentData.getGender())
+                .setPhone(studentData.getUserPhone())
+                .setBirthDate(studentData.getDay(), studentData.getMonth(), studentData.getYear())
+                .setSubjects(studentData.getSubject())
+                .setHobbies(studentData.getHobby())
+                .setPicture(studentData.getFilePath())
+                .setAddress(studentData.getAddress())
+                .setState(studentData.getState())
+                .setCity(studentData.getCity())
                 .clickSubmit();
 
 

@@ -30,7 +30,7 @@ public class DataGenerator {
         String day = sdfDay.format(fakerDate);
 
 
-        String filePath = "pictures/JAVA_20.6_10.jpg";
+        String filePath = "pictures/img1.jpg";
         String address = faker.address().fullAddress();
 
         var mapStateWithCity = Map.of(
