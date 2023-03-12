@@ -20,7 +20,7 @@ public class RegistrationPage {
             phoneInput = $("#userNumber"),
             subjectsInput = $("#subjectsInput"),
             subjectsClick = $("#subjectsWrapper .subjects-auto-complete__option"),
-            hobbiesInput = $(By.cssSelector("label[for='hobbies-checkbox-3']")),
+            hobbiesInput = $("#hobbiesWrapper"),
             pictureUpload = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
             stateInput = $("#state"),
