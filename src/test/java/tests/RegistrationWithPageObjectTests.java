@@ -33,7 +33,7 @@ public class RegistrationWithPageObjectTests extends TestBase {
                 .setPhone(userNumber)
                 .setBirthDate(userBirth_day, userBirth_month, userBirth_year)
                 .setSubjects(userSubjects)
-                .setHobbies(userHobbies)
+                .setHobby(userHobbies)
                 .setPicture(userPictureLocation)
                 .setAddress(userAddress)
                 .setState(userState)

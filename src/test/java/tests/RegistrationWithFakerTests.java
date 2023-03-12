@@ -26,7 +26,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setPhone(studentData.getUserPhone())
                 .setBirthDate(studentData.getDay(), studentData.getMonth(), studentData.getYear())
                 .setSubjects(studentData.getSubject())
-                .setHobbies(studentData.getHobby())
+                .setHobby(studentData.getHobby())
                 .setPicture(studentData.getFilePath())
                 .setAddress(studentData.getAddress())
                 .setState(studentData.getState())
@@ -44,7 +44,8 @@ public class RegistrationWithFakerTests extends TestBase {
                 .verifyResult("Hobbies", studentData.getHobby())
                 .verifyResult("Address", studentData.getAddress())
                 .verifyResult("State and City", studentData.getState() + " " + studentData.getCity())
-                .verifyResult("Picture", studentData.getFilePath());
+                .verifyResult("Picture", studentData.getFilePath()
+                .substring(studentData.getFilePath().lastIndexOf("/")+ 1));
 
     }
 }

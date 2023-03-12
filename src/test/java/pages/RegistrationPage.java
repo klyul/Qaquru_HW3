@@ -16,7 +16,7 @@ public class RegistrationPage {
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
-            genderInput = $(byText("Female")),
+            genderInput = $("#genterWrapper"),
             phoneInput = $("#userNumber"),
             subjectsInput = $("#subjectsInput"),
             subjectsClick = $("#subjectsWrapper .subjects-auto-complete__option"),
@@ -61,7 +61,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender(String gender) {
-        genderInput.click();
+        genderInput.$(byText(gender)).click();
 
         return this;
     }
@@ -85,8 +85,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setHobbies(String hobby) {
-        hobbiesInput.click();
+    public RegistrationPage setHobby(String hobby) {
+        hobbiesInput.$(byText(hobby)).click();
 
         return this;
     }
@@ -95,6 +95,7 @@ public class RegistrationPage {
         pictureUpload.uploadFromClasspath(location);
 
         return this;
+
     }
 
     public RegistrationPage setAddress(String value) {
