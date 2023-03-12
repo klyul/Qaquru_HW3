@@ -3,13 +3,14 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.RegistrationResultsModal;
+import utils.DataGenerator;
 import utils.StudentData;
 
 import static tests.TestData.userEmail;
 import static tests.TestData.userName;
 
 public class RegistrationWithFakerTests extends TestBase {
-    RegistrationWithFakerTests registrationPage = new RegistrationWithFakerTests();
+    RegistrationWithFakerTests registrationPage = new RegistrationPage();
      StudentData studentData = DataGenerator.getRandomStudent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
