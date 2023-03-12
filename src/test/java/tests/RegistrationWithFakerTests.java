@@ -1,74 +1,49 @@
 package tests;
 
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.RegistrationResultsModal;
+import utils.StudentData;
 
-import java.util.Locale;
-
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static utils.RandomUtils.getRandomEmail;
-import static utils.RandomUtils.getRandomString;
+import static tests.TestData.userEmail;
+import static tests.TestData.userName;
 
 public class RegistrationWithFakerTests extends TestBase {
-
-    RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationWithFakerTests registrationPage = new RegistrationWithFakerTests();
+     StudentData studentData = DataGenerator.getRandomStudent();
+    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
     @Test
-    void successfulRegistrationTest() {
-        Faker faker = new Faker(new Locale("it"));
-
-        String userName = faker.name().firstName(),
-                lastName = faker.name().lastName(),
-                userEmail = faker.internet().emailAddress(),
-//                userNumber = "+7" + faker.number().numberBetween(1000000, 9999999);
-//                currentAddress = faker.address().fullAddress();
-                currentAddress = faker.lebowski().quote();
+    void fillFormTest() {
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName(userName)
-                .setLastName(lastName)
+                .setLastName(userLastName)
                 .setEmail(userEmail)
-                .setGender("Other")
-                .setPhone("1234567890")
-                .setBirthDate("30", "July", "2008");
+                .setGender(userGender)
+                .setPhone(userNumber)
+                .setBirthDate(userBirth_day, userBirth_month, userBirth_year)
+                .setSubjects(userSubjects)
+                .setHobbies(userHobbies)
+                .setPicture(userPictureLocation)
+                .setAddress(userAddress)
+                .setState(userState)
+                .setCity(userCity)
+                .clickSubmit();
 
-        $("#subjectsInput").setValue("Math").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#currentAddress").setValue(currentAddress);
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
 
-        registrationPage.verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " " + lastName)
+        registrationResultsModal.verifyModalAppears()
+                .verifyResult("Student Name", userName + " " + userLastName)
                 .verifyResult("Student Email", userEmail)
-                .verifyResult("Gender", "Other")
-                .verifyResult("Mobile", "1234567890")
-                .verifyResult("Date of Birth", "30 July,2008")
-                .verifyResult("Current address", currentAddress);
-//        registrationPage.registrationResultsModal.verifyResult("Student Name", userName + " Egorov");
+                .verifyResult("Gender", userGender)
+                .verifyResult("Mobile", userNumber)
+                .verifyResult("Date of Birth", userBirth_day + " " + userBirth_month + "," + userBirth_year)
+                .verifyResult("Subjects", userSubjects)
+                .verifyResult("Hobbies", userHobbies)
+                .verifyResult("Address", userAddress)
+                .verifyResult("State and City", userState + " " + userCity)
+                .verifyResult("Picture", "img1.jpg");
+
     }
-
-    @Test
-    void successfulRegistration1Test() {
-        String userName = "Alex";
-
-        registrationPage.openPage();
-
-        registrationPage.setFirstName(userName);
-        registrationPage.setLastName("Egorov");
-        registrationPage.setEmail("alex@egorov.com");
-        registrationPage.setGender("Other");
-        registrationPage.setPhone("1234567890");
-
-        $("#dateOfBirthInput").click();
-        // ...
-    }
-
 }
