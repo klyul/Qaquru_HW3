@@ -35,16 +35,16 @@ public class RegistrationWithFakerTests extends TestBase {
 
 
         registrationResultsModal.verifyModalAppears()
-                .verifyResult("Student Name", userName + " " + userLastName)
-                .verifyResult("Student Email", userEmail)
-                .verifyResult("Gender", userGender)
-                .verifyResult("Mobile", userNumber)
-                .verifyResult("Date of Birth", userBirth_day + " " + userBirth_month + "," + userBirth_year)
-                .verifyResult("Subjects", userSubjects)
-                .verifyResult("Hobbies", userHobbies)
-                .verifyResult("Address", userAddress)
-                .verifyResult("State and City", userState + " " + userCity)
-                .verifyResult("Picture", "img1.jpg");
+                .verifyResult("Student Name", studentData.getFirstName() + " " + studentData.getLastName())
+                .verifyResult("Student Email", studentData.getUserEmail())
+                .verifyResult("Gender", studentData.getGender())
+                .verifyResult("Mobile", studentData.getUserPhone())
+                .verifyResult("Date of Birth", studentData.getDay() + " " + studentData.getMonth() + "," + studentData.getYear())
+                .verifyResult("Subjects", studentData.getSubject())
+                .verifyResult("Hobbies", studentData.getHobby())
+                .verifyResult("Address", studentData.getAddress())
+                .verifyResult("State and City", studentData.getState() + " " + studentData.getCity())
+                .verifyResult("Picture", studentData.getFilePath());
 
     }
 }
