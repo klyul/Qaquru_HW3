@@ -22,6 +22,7 @@ public class TestBase {
 
         // Configuration.holdBrowserOpen = true;
         Configuration.pageLoadStrategy = "eager";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         executionMode = System.getProperty("executionMode", "local");
         logger.info("Execution mode: " + executionMode);

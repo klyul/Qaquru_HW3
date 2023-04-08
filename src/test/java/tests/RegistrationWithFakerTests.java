@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.RegistrationResultsModal;
@@ -14,6 +15,7 @@ public class RegistrationWithFakerTests extends TestBase {
     StudentData studentData = DataGenerator.getRandomStudent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
+    @Tag("simple")
     @Test
     void fillFormTest() {
 
